@@ -16,6 +16,7 @@ services:
       - ${PG_PORT:-5432}:${PG_PORT:-5432}
     volumes:
       - marble-db:/data/postgres
+      - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 2s
